@@ -4,10 +4,12 @@ public class ArrayDemo {
 
 	public static void main(String args[]){
 		int data [] = new int[3];
+		data[0] = 10;
+		data[1] = 20;
+		data[2] = 30;
 		
-		System.out.println(data[0]);
-		System.out.println(data[1]);
-		System.out.println(data[2]);
-		System.out.println(data[3]);
+		for(int x=0;x<data.length;x++){
+			System.out.print(data[x]+", ");
+		}
 	}
 }
