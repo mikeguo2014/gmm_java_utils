@@ -70,17 +70,90 @@ class Book{
   • 静态初始化
         类名称 对象数组名称 [] = new 类名称[] {实例化对象,实例化对象,...};
    
+03014 字符串比较
+    面试题：请解释字符串比较之中“==”和equals()的区别？
+    • ==：比较的是两个字符串内存地址的数值是否相等，属于数值比较；
+    • equals()：比较的是两个字符串的内容，属于内容比较。
+      以后进行字符串相等判断的时候都使用equals()。
+
+03016 String 两种实例化方式的区别
+    面试题：请解释String类的两种对象实例化方式的区别？
+    • 直接赋值：只开辟一块堆内存空间，字符串的内容可以自动入池，以供下次使用；
+    • 构造方法：开辟两块堆内存空间，有一块将成为垃圾，并且不能自动入池，使用intern()手工入池。
+     在日后的所有开发之中，String对象的实例化永远都采用直接赋值的方式完成。
+
+
+03017 字符串内容不可改变
+    String str = "" ;
+    for (int x = 0 ; x < 1000 ; x ++) {
+        str += x ;
+    }
+       这种代码需要“断开-连接”String对象1000次，会产生大量垃圾，所以不能够去使用。
    
    
+03018 字符与字符串
+No.	方法名称	                                                                                        类型	                 描述
+1	public String(char[] value)	                                                构造            将全部的字符数组内容变为字符串
+2	public String(char[] value, int offset, int count)	构造	           将部分字符数组变为字符串，offset表示开始点，count表示要操作的长度
+3	public char charAt(int index)	                                        普通	           取得指定索引位置上的字符
+4	public char[] toCharArray()	                                                普通            将字符串转换为字符数组
+
    
+03019 字符串与字节
+    字节使用byte描述，使用字节一般主要用于数据的传输或者进行编码转换时使用。
+    将字符串变为字节数组的操作，目的就是为了传输以及编码转换。
+  
+  No.  方法名称	                                                                                        类型	      描述
+  1	   public String(byte[] bytes)	                                                构造	      将全部的字节数组变为字符串
+  2	   public String(byte[] bytes, int offset, int length)	构造	      将部分的字节数组变为字符串
+  3	   public byte[] getBytes()	                                                        普通	      将字符串变为字节数组
+  4	   public byte[] getBytes(String charsetName)           普通	       字符串转码操作
+           throws UnsupportedEncodingException	
+  
    
+03020 字符串比较
+No.	方法名称	                                                                                               类型	         描述
+1	public boolean equals(String anObject)	                               普通	         区分大小写的相等判断
+2	public boolean equalsIgnoreCase(String anotherString)   普通    	 不区分大小写比较是否相等
+3	public int compareTo(String anotherString)	                        普通	         比较两个字符串的大小
+如果现在要想比较两个字符串的大小关系，那么就必须使用compareTo()方法完成，而这个方法返回int型数据，
+而这个int型数据有三种结果：大于（返回结果大于0）、小于（返回结果小于0）、等于（返回结果为0）。
    
-   
-   
-   
-   
-   
-   
-   
-   
+03021 字符串查找
+No.	方法名称	类型	描述
+1	public boolean contains(String s)	普通	查找指定的子字符串是否存在，JDK 1.5之后有
+2	public int indexOf(String str)	普通	从头查找指定字符串的位置，找不到返回-1
+3	public int indexOf(String str, int fromIndex)	普通	由指定位置向后查找字符串的位置，找不到返回-1
+4	public int lastIndexOf(String str)	普通	由后向前查找字符串的位置，找不到返回-1
+5	public int lastIndexOf(String str, int fromIndex)	普通	从指定位置由后向前查找
+6	public boolean startsWith(String prefix)	普通	判断是否以指定的字符串开头
+7	public boolean startsWith(String prefix, int toffset)	普通	从指定位置判断是否以指定字符串开头，JDK 1.7
+8	public boolean endsWith(String suffix)	普通	判断是否以指定的字符串结尾
+
+03022 字符串替换
+No.	方法名称	类型	描述
+1	public String replaceAll(String regex, String replacement)	普通	全部替换
+2	public String replaceFirst(String regex, String replacement)	普通	替换首个
+
+03023 字符串截取
+No.	方法名称	类型	描述
+1	public String substring(int beginIndex)	普通	从指定位置截取到结尾
+2	public String substring(int beginIndex, int endIndex)	普通	截取指定范围的内容
+
+03024 字符串拆分
+No.	方法名称	类型	描述
+1	public String[] split(String regex)	普通	按照指定的字符串全拆分
+2	public String[] split(String regex, int limit)	普通	拆分为指定的长度
+
+03025 字符串其它方法
+No.	方法名称	类型	描述
+1	public boolean isEmpty()	普通	判断是否为空字符串（""）
+2	public int length()	普通	取得字符串长度
+3	public String trim()	普通	去掉左右空格
+4	public String toLowerCase()	普通	将全部字符串转小写
+5	public String toUpperCase()	普通	将全部字符串转大写
+6	public String intern()	普通	入池
+7	public String concat(String str)	普通	字符串连接
+
+
    
